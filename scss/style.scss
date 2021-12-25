@@ -1,0 +1,90 @@
+$header-bg: #CC92C2;
+$main-bg: #3C6997;
+$aside-bg: #FFDD4A;
+$black: #000;
+$white: #FFF;
+
+@mixin flex($direction: column, $align: center, $justify: center) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.body {
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    @include flex(column, center, start);
+
+    .header {
+        width: inherit;
+        height: 3.5rem; /* temporary */
+        background-color: #f9f9f9;
+        @include flex(row, center, space-between);
+        padding: 0 5rem;
+
+        .logo-ham {
+            background-color: $header-bg;
+            width: 20%;
+            height: inherit;
+        }
+
+        .searchbar {
+            background-color: $black;
+            width: 40%;
+            height: inherit;
+        }
+
+        .navigation {
+            background-color: coral;
+            width: 30%;
+            height: inherit;
+        }
+    }
+
+    .main {
+        width: inherit;
+        height: 50rem; /* temporary */
+        background-color: $main-bg;
+        padding: 1.75rem 4.5rem;
+        @include flex(row, center, space-between);
+
+        .video-section {
+            width: 65%;
+            background-color: $white;
+            height: inherit;
+            padding: 2rem 0;
+            @include flex(column, center, start);
+
+            .video {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                background-color: $black;
+
+                iframe {
+                    width: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        .thumbnails-section {
+            width: 32.5%;
+            background-color: $aside-bg;
+            height: inherit;
+        }
+    }
+}
